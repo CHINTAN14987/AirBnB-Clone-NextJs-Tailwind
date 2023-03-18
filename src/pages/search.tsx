@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 interface IProps {
   data: any;
 }
-const search: FC<IProps> = (props) => {
+const Search: FC<IProps> = (props) => {
   const { data } = props;
 
   const { query } = useRouter();
@@ -102,4 +102,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default search;
+export default Search;
