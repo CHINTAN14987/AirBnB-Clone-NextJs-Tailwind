@@ -6,6 +6,7 @@ interface IProp {
 }
 const MediumCard: FC<IProp> = (props) => {
   const { data } = props;
+
   return (
     <div className="flex overflow-scroll scrollbar-hide">
       {data?.map((location: any, index: number) => {

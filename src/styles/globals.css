@@ -18,4 +18,275 @@
   .button {
     @apply py-2 px-5 rounded-2xl border-2 shadow-md  hover:bg-gray-100 hover:scale-105 transition transform duration-200 ease-out;
   }
+
+  .carousel-width {
+    width: 20rem !important;
+  }
+  .owl-carousel .owl-nav button.owl-prev {
+    width: 2rem !important;
+    height: 2rem !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: 45% !important;
+    left: 5% !important;
+    font-size: 30px !important;
+    z-index: 100 !important;
+    display: flex;
+  }
+  .carousel-width .owl-nav button.owl-prev span {
+    color: black !important;
+    position: absolute;
+    top: -30% !important;
+    left: 30% !important;
+  }
+  .owl-carousel .owl-nav button.owl-next {
+    width: 2rem !important;
+    height: 2rem !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: 45% !important;
+    right: 5% !important;
+    font-size: 30px !important;
+  }
+  .carousel-width .owl-nav button.owl-next span {
+    color: black !important;
+    position: absolute;
+    top: -30% !important;
+    left: 30% !important;
+  }
+  .owl-theme .owl-dots {
+    position: absolute !important;
+    width: 100% !important;
+    bottom: 5%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
+
+.date-left-container
+  .react-datepicker-popper[data-placement^="top"]
+  .react-datepicker__triangle::before,
+.react-datepicker-popper[data-placement^="bottom"]
+  .react-datepicker__triangle::before,
+.react-datepicker-popper[data-placement^="top"]
+  .react-datepicker__triangle::after,
+.react-datepicker-popper[data-placement^="bottom"]
+  .react-datepicker__triangle::after {
+  position: initial !important;
+}
+.date-left-container .react-datepicker {
+  position: absolute !important;
+  left: -7rem !important;
+  z-index: 30 !important;
+}
+
+.date-picker-component {
+  position: relative;
+  width: 5rem;
+  height: 2rem;
+}
+.date-picker-component .DateRangePicker > div {
+  width: 5rem !important;
+}
+.checkin-date-picker .DateRangePickerInput {
+  background-color: white !important;
+  height: 1rem !important;
+  width: 5rem !important;
+  border: none !important;
+}
+.checkin-date-picker .DateRangePickerInput div {
+  /* background-color: #e5e7eb !important; */
+  font-size: 14px;
+}
+.checkin-date-picker input[aria-label="End Date"] {
+  position: absolute !important;
+  right: -12.7rem !important;
+  top: -3.8rem !important;
+  padding: 0 !important;
+  /* width: 5rem !important; */
+  background-color: white !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+.checkin-date-picker input[aria-label="Start Date"] {
+  padding: 0 !important;
+  /* width: 5rem !important; */
+  background-color: white !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  position: absolute !important;
+  left: 1.7rem !important;
+  top: -0.8rem !important;
+}
+.date-picker-component .DateRangePickerInput {
+  background-color: #e5e7eb !important;
+  height: 2rem !important;
+  border: none !important;
+}
+.date-picker-component .DateInput_1 {
+  width: 5rem !important;
+}
+.DateRangePickerInput div {
+  /* background-color: #e5e7eb !important; */
+  font-size: 14px;
+}
+
+.date-picker-component
+  .DateRangePickerInput_arrow
+  .DateRangePickerInput_arrow_1 {
+  display: none !important;
+}
+
+.date-picker-component input[aria-label="End Date"] {
+  position: absolute !important;
+  right: -10.7rem !important;
+  top: -2.5rem !important;
+  padding: 0 !important;
+  width: 5rem !important;
+  background-color: #e5e7eb !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.date-picker-component input[aria-label="Start Date"] {
+  padding: 0 !important;
+  width: 5rem !important;
+  background-color: #e5e7eb !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.DateRangePickerInput_arrow_svg {
+  display: none !important;
+}
+
+.DayPickerKeyboardShortcuts_show {
+  display: none !important;
+}
+.date-picker-component .CalendarDay__selected {
+  background-color: red !important;
+  border-radius: 50% !important;
+}
+.date-picker-component .CalendarDay__selected_span {
+  background-color: pink !important;
+  border-radius: 50% !important;
+}
+.date-picker-component .DayPicker_weekHeader {
+  color: grey !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.CalendarDay__default {
+  border: none !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+.date-picker-component .DateRangePicker_picker {
+  position: absolute !important;
+  top: 5rem !important;
+  left: -18rem !important;
+  width: 50rem !important;
+  height: 42rem !important;
+  border: 2px light gainsboro;
+}
+.room-date-picker .DateRangePicker_picker {
+  position: absolute !important;
+  top: 0 !important;
+  left: -2rem !important;
+
+  border: 2px light gainsboro;
+}
+/* .DateRangePicker_picker > div {
+  z-index: 30 !important;
+} */
+.DayPicker__withBorder {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.DateInput_fangStroke {
+  stroke: none !important;
+  fill: none !important;
+}
+.DayPickerNavigation_button__default {
+  border: none !important;
+}
+.date-picker-component span[aria-label="Previous"] {
+  display: block !important;
+  opacity: 1 !important;
+}
+.CalendarMonthGrid {
+  width: 100% !important;
+  height: 100 !important;
+}
+.date-picker-component .DayPicker_transitionContainer {
+  width: 50rem !important;
+  height: 42rem !important;
+}
+.date-picker-component .CalendarMonthGrid {
+  position: absolute !important;
+  left: 6rem !important;
+  width: 40rem !important;
+  top: 15rem !important;
+  height: 15rem !important;
+}
+.date-picker-component .DayPicker_weekHeader_ul {
+  position: absolute !important;
+  left: 6rem !important;
+  top: 12rem !important;
+  display: flex !important;
+}
+.date-picker-component .CalendarMonth_caption strong {
+  position: absolute;
+  top: -2.5rem;
+  margin-left: -35px;
+}
+
+.date-picker-component .DayPickerNavigation_leftButton__horizontalDefault {
+  position: absolute;
+  left: 6.8rem !important;
+  top: 12rem !important;
+}
+.date-picker-component .DayPickerNavigation_rightButton__horizontalDefault {
+  position: absolute;
+  right: -3.7rem !important;
+  top: 12rem !important;
+}
+
+.ant-btn {
+  display: none !important;
+}
+.room-date-picker .DateInput_input {
+  opacity: 0 !important;
+}
+.room-date-picker .DateRangePickerInput {
+  background-color: white !important;
+}
+
+.room-date-picker .CalendarDay__selected {
+  background-color: black !important;
+  border-radius: 50% !important;
+}
+.room-date-picker .CalendarDay__selected_span {
+  background-color: white !important;
+  color: #484848 !important;
+}
+.input-scroller {
+  transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+}
+/* .calender-opacity {
+  opacity: 1 !important;
+}
+.calender-opacity-none {
+  opacity: 0 !important;
+} */
+/* .guests-list-disabled:hover {
+  border-color: 1px solid yellow !important;
+  color: solid rgb(229 231 235) !important;
+} */

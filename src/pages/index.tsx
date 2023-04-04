@@ -2,11 +2,16 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header/Header";
 import Banner from "@/components/Banner/Banner";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import SmallCard from "@/components/SmallCard/SmallCard";
 import MediumCard from "@/components/MediumCard/MediumCard";
 import LargeCard from "@/components/LargeCard/LargeCard";
 import Footer from "@/components/Footer/Footer";
+
+import store from "../redux/store";
+import { useSelector } from "react-redux";
+import { getDatabase, ref, child, get, set, update } from "firebase/database";
+import { getData } from "@/helper/helper";
 
 const inter = Inter({ subsets: ["latin"] });
 interface Iprops {
@@ -17,10 +22,32 @@ interface Iprops {
     description: string;
     title: string;
   };
+  largeCardData: any[];
 }
+
 const Home: FC<Iprops> = (props) => {
-  const { smallCardData, mediumCardData, BaseBannerData } = props;
-  console.log(BaseBannerData);
+  const { smallCardData, mediumCardData, BaseBannerData, largeCardData } =
+    props;
+  const appBackground = useSelector((state: any) => state.Reducer.background);
+
+  // const database = getDatabase();
+  // update(ref(database, "hotel/h9"), { hello: 20 });
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getData(
+        "https://airbus-demo-1a4fb-default-rtdb.firebaseio.com/hotel.json"
+      );
+      return response;
+    };
+    fetchData().then((response) => {
+      const paths = [];
+
+      for (const key in response) {
+        paths.push({ params: { rooms: key } });
+      }
+      console.log(paths);
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -31,19 +58,22 @@ const Home: FC<Iprops> = (props) => {
       </Head>
 
       <Header />
-      <Banner />
-      <main className="max-w-7xl mx-auto px-8">
+      {/* <Banner data={BaseBannerData} /> */}
+      <main
+        // className={`w-[90%] mx-auto bg-${"yellow"}`}
+        style={{ margin: "auto", background: appBackground }}
+      >
         <section className="pt-6">
-          <h2 className="text-4xl font-semibold pb-5">Explore near by</h2>
-          <SmallCard country={smallCardData} />
+          {/* <h2 className="text-4xl font-semibold pb-5">Explore near by</h2> */}
+          {/* <SmallCard country={smallCardData} /> */}
         </section>
 
         <section className="pt-6">
-          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
-          <MediumCard data={mediumCardData} />
+          {/* <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <MediumCard data={mediumCardData} /> */}
         </section>
         <section className="pt-6">
-          <LargeCard data={BaseBannerData} />
+          <LargeCard data={largeCardData} />
         </section>
       </main>
       <Footer />
@@ -77,11 +107,21 @@ export async function getStaticProps() {
   for (const value in ExoticHotelsData) {
     mediumCardData.push({ id: value, ...ExoticHotelsData[value] });
   }
+
+  const hotelData: any = getData(
+    "https://airbus-demo-1a4fb-default-rtdb.firebaseio.com/hotel.json"
+  );
+
+  const data = [];
+  for (const key in hotelData) {
+    data.push({ id: key, ...hotelData[key] });
+  }
   return {
     props: {
       smallCardData,
       mediumCardData,
       BaseBannerData: BaseBannerData.l1,
+      largeCardData: data,
     },
   };
 }

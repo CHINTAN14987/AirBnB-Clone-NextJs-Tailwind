@@ -8,7 +8,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: { sm: { max: "640px" } },
+    },
   },
+  important: true,
   plugins: [require("tailwind-scrollbar-hide")],
 };
