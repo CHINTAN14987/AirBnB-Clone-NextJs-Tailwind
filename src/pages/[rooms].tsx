@@ -23,6 +23,8 @@ import Image from "next/image";
 import RoomCheckIn from "@/components/RoomCheckIn/RoomCheckIn";
 import Header from "@/components/Header/Header";
 import { Data } from "@/owner-utils/OnwerUtils";
+import ReviewGraph from "@/components/reviews/ReviewGraph";
+import Reviews from "@/components/reviews/Reviews";
 interface IProps {
   hotel: any;
 }
@@ -99,7 +101,7 @@ const Rooms: FC<IProps> = (props) => {
         <ImageContainer view={hotel.groupImages} />
         <main className=" mt-8 ">
           <div
-            className="absolute input-scroller left-[60%]"
+            className="absolute input-scroller left-[60%] bg-white"
             style={{ top: `${top}px` }}
           >
             <RoomCheckIn
@@ -290,6 +292,10 @@ const Rooms: FC<IProps> = (props) => {
                 </div>
               </div>
             </section>
+          </section>
+          <section>
+            <ReviewGraph rating={hotel.rating} modalActive={false} />
+            <Reviews rating={hotel.rating} modalActive={false} />
           </section>
         </main>
 

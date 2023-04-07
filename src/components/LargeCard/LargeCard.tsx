@@ -1,13 +1,10 @@
 import React, { FC, useState, useEffect, useRef } from "react";
 import Slider from "./Slider";
-import heartIcon from "../../../public/heart.svg";
-import Image from "next/image";
 import { HeartTwoTone, HeartFilled, StarFilled } from "@ant-design/icons";
 import { addDoc, collection } from "firebase/firestore";
 import { database, db } from "@/firebase/firebase";
 import { getDatabase, ref, set, update } from "firebase/database";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 interface IProps {
   data: any[];
@@ -20,10 +17,7 @@ const LargeCard: FC<IProps> = (props) => {
   const [displayPrice, setDisplayPrice] = useState<boolean>(false);
   const [displayPriceItemIndex, setDisplayPriceItemIndex] =
     useState<number>(-1);
-  const [carouselContentDisplay, setCarouselContentDisplay] =
-    useState<boolean>(false);
 
-  const carouselRef = React.useRef<HTMLDivElement | null>(null);
   const Router = useRouter();
   const onMouseEnterHandler = (index: number): void => {
     setHoverItemIndex(index);
@@ -49,26 +43,16 @@ const LargeCard: FC<IProps> = (props) => {
     // Router.replace(Router.asPath);
     // console.log(value);
   };
-  useEffect(() => {
-    const clickHandler = (e: any) => {
-      // const ele = document
-      //   .getElementsByClassName("slider")[0]
-      //   .querySelectorAll("img");
-      // console.log(ele);
-      // // console.log(carouselRef.current);
-      // console.log(e.target);
-      // console.log(carouselRef?.current?.contains(e.target));
-    };
-    window.addEventListener("click", clickHandler);
-    // return () => {
-    //   window.removeEventListener("click", clickHandler);
-    // };
-  }, []);
-  const hotelRoomsHandler = (item: any) => {
-    // Router.push({ pathname: "./rooms", query: { id: item.id } });
+
+  const hotelRoomsHandler = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    item: any
+  ) => {
+    e.preventDefault();
+    (e.target as HTMLElement).tagName === "IMG" &&
+      Router.push({ pathname: `./${item.id}`, query: { id: item.id } });
   };
   const whishlistRemoveHandler = async (value: any) => {
-    setCarouselContentDisplay(true);
     setIsRefreshing(true);
     await update(ref(db, `hotel/${value.id}`), {
       wishlist: false,
@@ -79,8 +63,6 @@ const LargeCard: FC<IProps> = (props) => {
   const cancelDiplayPriceHandler = () => {
     setDisplayPrice(false);
   };
-
-  useEffect;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,19 +87,16 @@ const LargeCard: FC<IProps> = (props) => {
     <div className="relative cursor-pointer md:grid grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 w-[90%] mx-auto">
       {carouselItems?.map((item: any, index: number) => {
         return (
-          <Link
-            className="relative max-w-[20rem] min-h-[20rem] "
-            // onClick={() => {
-            //   hotelRoomsHandler(item);
-            // }}
-            href={`${item.id}`}
-          >
+          <div className="relative max-w-[20rem] min-h-[20rem] ">
             <div
-              className="slider"
               onMouseEnter={() => {
                 onMouseEnterHandler(index);
               }}
+              onClick={(e) => {
+                hotelRoomsHandler(e, item);
+              }}
               onMouseLeave={onMouseLeaveHandler}
+              className="slider"
             >
               <Slider
                 content={item.groupImages}
@@ -127,7 +106,6 @@ const LargeCard: FC<IProps> = (props) => {
             <div>
               {item.wishlist ? (
                 <HeartFilled
-                  ref={carouselRef}
                   className="absolute z-10 top-5 right-10 text-2xl text-red-600"
                   onClick={() => {
                     whishlistRemoveHandler(item);
@@ -192,7 +170,7 @@ const LargeCard: FC<IProps> = (props) => {
                 </div>
               </div>
             )}
-          </Link>
+          </div>
         );
       })}
     </div>

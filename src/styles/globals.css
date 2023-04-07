@@ -56,6 +56,9 @@
     top: -30% !important;
     left: 30% !important;
   }
+  .owl-nav {
+    margin-top: 0 !important;
+  }
   .owl-theme .owl-dots {
     position: absolute !important;
     width: 100% !important;
@@ -290,3 +293,13 @@
   border-color: 1px solid yellow !important;
   color: solid rgb(229 231 235) !important;
 } */
+.review-container .graph {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.ant-modal {
+  width: 50rem !important;
+}
+.ant-modal-close {
+  left: 10px !important;
+}

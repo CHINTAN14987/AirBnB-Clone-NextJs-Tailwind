@@ -35,16 +35,18 @@ const Slider: FC<IProps> = (props) => {
           return (
             <>
               {item && (
-                <div
-                  className="relative h-[20rem] w-[20rem]"
-                  style={{ zIndex: 1 }}
-                >
-                  <Image
-                    src={item}
-                    layout="fill"
-                    alt="hotel"
-                    className="rounded-xl"
-                  />
+                <div>
+                  <div
+                    className="relative h-[20rem] w-[20rem]"
+                    style={{ zIndex: 10 }}
+                  >
+                    <Image
+                      src={item}
+                      layout="fill"
+                      alt="hotel"
+                      className="rounded-xl"
+                    />
+                  </div>
                 </div>
               )}
             </>

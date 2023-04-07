@@ -38,25 +38,16 @@ const regionList: IRegionList[] = [
     region: "Middle East",
   },
 ];
-interface IProps {
-  results: Boolean;
-}
-const Region: FC<IProps> = (props) => {
-  const { results } = props;
+
+const Region = () => {
   const bookingDetails = useSelector((state: any) => state.Reducer);
-  const [resultData, setResultData] = useState<any[]>([]);
-  useEffect(() => {
-    const tempArr = resultData;
-    tempArr.push(bookingDetails);
-    setResultData(tempArr);
-  }, []);
 
   return (
     <div
       className="absolute z-30 border border-gray-200 rounded-2xl p-5 bg-white shadow-white shadow-lg flex left-0 top-20 flex "
-      style={{ width: results ? "45rem" : "45rem" }}
+      style={{ width: bookingDetails?.results?.length ? "45rem" : "28rem" }}
     >
-      {
+      {bookingDetails?.results?.length ? (
         <div className="flex-grow border-r-2">
           <h3 className="text-sm font-semibold mb-8">Recent Searches</h3>
           <div className="flex flex-col space-y-6 pr-4">
@@ -81,7 +72,9 @@ const Region: FC<IProps> = (props) => {
             })}
           </div>
         </div>
-      }
+      ) : (
+        <></>
+      )}
       <div className="ml-8">
         <h3 className="text-sm font-semibold mb-8">Search regions</h3>
         <div className="grid grid-cols-3  ">
