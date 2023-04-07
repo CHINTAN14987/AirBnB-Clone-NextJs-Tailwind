@@ -25,11 +25,13 @@ import Header from "@/components/Header/Header";
 import { Data } from "@/owner-utils/OnwerUtils";
 import ReviewGraph from "@/components/reviews/ReviewGraph";
 import Reviews from "@/components/reviews/Reviews";
+import ReviewModal from "@/components/reviews/ReviewModal";
 interface IProps {
   hotel: any;
 }
 const Rooms: FC<IProps> = (props) => {
   const { hotel } = props;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [focusedInput, setFocusedInput] = useState("startDate");
   const [displayCalender, setDisplayCalender] = useState<boolean>(false);
@@ -41,6 +43,7 @@ const Rooms: FC<IProps> = (props) => {
   const ModalHandler = () => {
     setIsModalOpen(true);
   };
+  const [displayReviewModal, setDisplayReviewModal] = useState<boolean>(false);
 
   const cancelBookingDatesHandler = () => {
     dispatch(bookingDates({ startDate: "", endDate: "" }));
@@ -90,7 +93,14 @@ const Rooms: FC<IProps> = (props) => {
             </div>
           )}
           <span className="font-bold">.</span>
-          <span className="underline font-semibold">10 reviews </span>
+          <span
+            className="underline font-semibold cursor-pointer"
+            onClick={() => {
+              setDisplayReviewModal(true);
+            }}
+          >
+            10 reviews{" "}
+          </span>
           <span className="font-bold">.</span>
           <div className="flex items-center">
             <BsFillAwardFill />
@@ -113,8 +123,7 @@ const Rooms: FC<IProps> = (props) => {
           <section className="pb-6 border-b border-gray-200 w-[60%] container flex items-center ">
             <div className="flex-grow">
               <h3 className="text-2xl text-black font-bold mb-1">
-                Entire villa hosted by{" "}
-                {hydrated && Data?.[Math.floor(Math.random() * 8)]?.name}
+                Entire villa hosted by {hotel?.ownerDetails?.name}
               </h3>
               <h3 className="text-lg">
                 {hotel.guests} . {hotel.bedroom} . {hotel.bed} .{" "}
@@ -122,13 +131,12 @@ const Rooms: FC<IProps> = (props) => {
               </h3>
             </div>
             <div className="relative w-[3rem] h-[3rem] ">
-              {hydrated && (
-                <img
-                  className="rounded-full"
-                  src={Data?.[Math.floor(Math.random() * 8)]?.img as any}
-                  alt=""
-                />
-              )}
+              <Image
+                className="rounded-full"
+                layout="fill"
+                src={hotel?.ownerDetails?.img}
+                alt=""
+              />
             </div>
           </section>
           <section className="mt-12 border-b border-gray-200 w-[60%]">
@@ -298,58 +306,66 @@ const Rooms: FC<IProps> = (props) => {
             <Reviews rating={hotel.rating} modalActive={false} />
           </section>
         </main>
-
+        {displayReviewModal && (
+          <Modal
+            open={displayReviewModal}
+            onCancel={() => {
+              setDisplayReviewModal(false);
+            }}
+            style={{ minHeight: "20rem" }}
+            width={"50rem"}
+          >
+            <ReviewModal rating={hotel.rating} />
+          </Modal>
+        )}
         {isModalOpen && (
-          <CustomModal>
-            <Modal
-              open={isModalOpen}
-              onCancel={() => {
-                setIsModalOpen(false);
-              }}
-            >
-              <div className="text-lg">
-                <h3 className="font-bold text-2xl mb-4">About this space</h3>
-                <p>All accommodation BREAKFAST INCLUDED</p>
-                <p>
-                  Transcend the boundaries between inside and outside. Slide
-                  open the walls, slip through, and behold the striking expanse
-                  of the outside world. Just above beautiful beach with ocean
-                  view and jungle setting. Just published in Wall Paper, Dezeen
-                  etc etc.
-                </p>
-                <p className="my-4">
-                  We are only 1km from the main road and beach on a steep
-                  unpaved road hill, giving you superb ocean view but you need
-                  4x4 car for access....
-                </p>
-                <h3 className="font-bold text-base mt-4">The space</h3>
-                <p className="mb-4">
-                  All our accommodations are with BREAKFAST INCLUDED
-                </p>
-                <p>
-                  IMPORTANT INFORMATION we are in a quiet neighborhood NO NOICE
-                  AFTER 9.pm outside! If you like to play LOUD MUSIC we are not
-                  a suitable place for you. We are NOT PARTY VILLA.
-                </p>
-                <p className="my-4">
-                  A spacious interior filled with light and shade, crowned by a
-                  rooftop jungle garden. Encounter the breath-giving force of
-                  nature from a rare, serene space that merges the elements in
-                  polished simplicity.
-                </p>
-                <h3 className="font-bold text-base">Other things to note</h3>
-                <p>
-                  Please note we are in a quiet neighborhood in the middle of
-                  beautiful nature. We kindly ask you not to cause noise after 9
-                  pm.
-                </p>
-                <p className="mt-4">
-                  Please note we are in the open jungle. We have bed mosquito
-                  net, but if you are afraid of insects, it is not for you.
-                </p>
-              </div>
-            </Modal>
-          </CustomModal>
+          <Modal
+            open={isModalOpen}
+            onCancel={() => {
+              setIsModalOpen(false);
+            }}
+          >
+            <div className="text-lg">
+              <h3 className="font-bold text-2xl mb-4">About this space</h3>
+              <p>All accommodation BREAKFAST INCLUDED</p>
+              <p>
+                Transcend the boundaries between inside and outside. Slide open
+                the walls, slip through, and behold the striking expanse of the
+                outside world. Just above beautiful beach with ocean view and
+                jungle setting. Just published in Wall Paper, Dezeen etc etc.
+              </p>
+              <p className="my-4">
+                We are only 1km from the main road and beach on a steep unpaved
+                road hill, giving you superb ocean view but you need 4x4 car for
+                access....
+              </p>
+              <h3 className="font-bold text-base mt-4">The space</h3>
+              <p className="mb-4">
+                All our accommodations are with BREAKFAST INCLUDED
+              </p>
+              <p>
+                IMPORTANT INFORMATION we are in a quiet neighborhood NO NOICE
+                AFTER 9.pm outside! If you like to play LOUD MUSIC we are not a
+                suitable place for you. We are NOT PARTY VILLA.
+              </p>
+              <p className="my-4">
+                A spacious interior filled with light and shade, crowned by a
+                rooftop jungle garden. Encounter the breath-giving force of
+                nature from a rare, serene space that merges the elements in
+                polished simplicity.
+              </p>
+              <h3 className="font-bold text-base">Other things to note</h3>
+              <p>
+                Please note we are in a quiet neighborhood in the middle of
+                beautiful nature. We kindly ask you not to cause noise after 9
+                pm.
+              </p>
+              <p className="mt-4">
+                Please note we are in the open jungle. We have bed mosquito net,
+                but if you are afraid of insects, it is not for you.
+              </p>
+            </div>
+          </Modal>
         )}
       </div>
     </div>

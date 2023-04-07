@@ -3,6 +3,7 @@ import data from "./data.json";
 import ReviewModal from "./ReviewModal";
 import { Modal } from "antd";
 import CustomModal from "../modal/CustomModal";
+import Highlighter from "react-highlight-words";
 
 interface IProps {
   rating: string;
@@ -65,15 +66,20 @@ const Reviews: FC<IProps> = (props) => {
                         </span>
                       </div>
                     ) : (
-                      <p
+                      <div
                         className={`${
                           modalActive
                             ? "mt-2 mb-8 text-base"
                             : "mb-2 text-lg font-light"
                         }`}
                       >
-                        {review.content}
-                      </p>
+                        <Highlighter
+                          highlightClassName="YourHighlightClass"
+                          searchWords={modalActive ? [inputValue!] : []}
+                          autoEscape={true}
+                          textToHighlight={review.content}
+                        />
+                      </div>
                     )}
                   </div>
                 </div>
@@ -93,7 +99,7 @@ const Reviews: FC<IProps> = (props) => {
         )}
         {!modalActive && (
           <button
-            className="text-base font-semibold border border-black px-2 py-4 w-[15rem] rounded-xl mb-8 hover:bg-gray-100"
+            className="text-base font-semibold border border-black px-2 py-4 w-[15rem] rounded-xl mb-8 hover:bg-gray-100 modal-content11"
             onClick={ModalHandler}
           >
             Show All Reviews
@@ -108,6 +114,7 @@ const Reviews: FC<IProps> = (props) => {
               setIsModalOpen(false);
             }}
             style={{ minHeight: "20rem" }}
+            width={"50rem"}
           >
             <ReviewModal rating={rating} />
           </Modal>

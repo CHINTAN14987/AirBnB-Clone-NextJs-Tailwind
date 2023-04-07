@@ -297,9 +297,7 @@
   display: flex !important;
   flex-direction: column !important;
 }
-.ant-modal {
-  width: 50rem !important;
-}
+
 .ant-modal-close {
   left: 10px !important;
 }

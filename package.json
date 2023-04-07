@@ -29,6 +29,7 @@
     "react-datepicker": "^4.10.0",
     "react-dates": "^21.8.0",
     "react-dom": "^18.2.0",
+    "react-highlight-words": "^0.20.0",
     "react-highlighter": "^0.4.3",
     "react-icons": "^4.8.0",
     "react-owl-carousel": "^2.3.3",
@@ -41,6 +42,7 @@
     "@types/react-date-range": "^1.4.4",
     "@types/react-datepicker": "^4.10.0",
     "@types/react-dates": "^21.8.3",
+    "@types/react-highlight-words": "^0.16.4",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"

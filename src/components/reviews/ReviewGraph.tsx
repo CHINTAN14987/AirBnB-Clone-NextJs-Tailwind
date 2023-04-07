@@ -16,7 +16,7 @@ const ReviewGraph: FC<IProps> = (props) => {
     { content: "Communication", rating: "4.71" },
   ];
   return (
-    <div className="mt-8">
+    <div className={`${modalActive ? "mt-8" : ""}`}>
       {rating && (
         <div className="flex items-center">
           <StarFilled className="-mt-2 text-2xl" />
