@@ -62,15 +62,15 @@ const ImageContainer: FC<IProps> = (props) => {
                 className=""
                 center={true}
               >
-                {groupImages?.map((item: string) => {
+                {groupImages?.map((item: string, index: number) => {
                   return (
-                    <>
+                    <React.Fragment key={index}>
                       {item && (
                         <div className="relative h-[30rem]">
                           <Image src={item} layout="fill" alt="" />
                         </div>
                       )}
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </OwlCarousel>

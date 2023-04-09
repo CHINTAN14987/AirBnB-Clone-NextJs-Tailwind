@@ -51,9 +51,9 @@ const Region = () => {
         <div className="flex-grow border-r-2">
           <h3 className="text-sm font-semibold mb-8">Recent Searches</h3>
           <div className="flex flex-col space-y-6 pr-4">
-            {bookingDetails?.results?.map((item: any) => {
+            {bookingDetails?.results?.map((item: any, index: number) => {
               return (
-                <div className="flex justify-between">
+                <div className="flex justify-between" key={index}>
                   <div className="w-[3rem] h-[3rem] flex items-center justify-center bg-gray-200 rounded-xl pb-2">
                     <ClockCircleOutlined className="text-3xl" />
                   </div>

@@ -9,8 +9,6 @@ import {
 } from "./actionType";
 
 const initialState = {
-  background: "",
-  navPos: "fixed",
   bookingStartDate: null,
   bookingEndDate: null,
   list: {
@@ -26,9 +24,6 @@ const initialState = {
 
 const Reducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case TOGGLE_BACKGROUND_COLOR:
-      const { bg, pos } = action.payload;
-      return { ...state, background: bg, navPos: pos };
     case BOOKING_DATES:
       const { startDate, endDate } = action.payload;
       return { ...state, bookingStartDate: startDate, bookingEndDate: endDate };

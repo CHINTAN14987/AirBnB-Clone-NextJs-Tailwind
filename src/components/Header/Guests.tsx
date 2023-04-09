@@ -18,11 +18,8 @@ const Guests: FC<IProps> = (props) => {
   const list = useSelector((state: any) => state.Reducer.list);
   const handleCancel = () => {
     setIsModalOpen(false);
-    dispatch(appBackground({ bg: "rgba(0, 0, 0, 0.2)", pos: "initial" }));
   };
-  useEffect(() => {
-    dispatch(appBackground({ bg: "#fffff", pos: "initial" }));
-  }, []);
+
   const increment = (value: string) => {
     dispatch(GuestListBookingIncrement({ value }));
   };

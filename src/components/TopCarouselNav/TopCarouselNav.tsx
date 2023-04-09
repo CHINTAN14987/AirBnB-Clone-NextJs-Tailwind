@@ -77,9 +77,12 @@ const TopCarouselNav = () => {
           loop={true}
           className="top-carousel owl-carousel"
         >
-          {data?.map((item: any) => {
+          {data?.map((item: any, index: number) => {
             return (
-              <div className="flex flex-col w-[fit-content] items-center">
+              <div
+                className="flex flex-col w-[fit-content] items-center"
+                key={index}
+              >
                 <div className="relative h-[1.5rem] w-[1.5rem]">
                   <Image src={item.img} layout="fill" alt="" />
                 </div>

@@ -28,8 +28,8 @@ const Amenities = ({ amenities }: any) => {
         What this place offers
       </h3>
       <div className="grid grid-cols-2">
-        {amenitiesData.map((item: string) => {
-          return <span>{item}</span>;
+        {amenitiesData.map((item: string, index: number) => {
+          return <span key={index}>{item}</span>;
         })}
       </div>
       <button

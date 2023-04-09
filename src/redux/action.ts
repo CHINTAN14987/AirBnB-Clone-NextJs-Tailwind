@@ -2,17 +2,10 @@ import {
   BOOKING_DATES,
   DESTINATION_SEARCH,
   GET_HOTELS,
-  GUESTS_LIST,
   GUESTS_LIST_DECREMENT,
   GUESTS_LIST_INCREMENT,
   SEARCH_RESULTS,
-  TOGGLE_BACKGROUND_COLOR,
 } from "./actionType";
-
-export const appBackground = (data: any) => ({
-  type: TOGGLE_BACKGROUND_COLOR,
-  payload: data,
-});
 
 export const bookingDates = (data: any) => ({
   type: BOOKING_DATES,
