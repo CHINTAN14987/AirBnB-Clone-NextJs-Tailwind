@@ -89,6 +89,7 @@ const ImageContainer: FC<IProps> = (props) => {
                 return (
                   <div
                     className="relative min-h-[20rem] hover:opacity-50 hover:bg-black"
+                    key={index}
                     onClick={() => {
                       displayCarouselHandler(index);
                     }}

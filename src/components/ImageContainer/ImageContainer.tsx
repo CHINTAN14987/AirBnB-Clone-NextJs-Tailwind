@@ -22,7 +22,7 @@ const ImageContainer: FC<IProps> = (props) => {
             .splice(1, 4)
             ?.map((image: string, index: number) => {
               return (
-                <div className="relative h-[12.2rem] flex-grow">
+                <div className="relative h-[12.2rem] flex-grow" key={index}>
                   <Image
                     src={image}
                     layout="fill"

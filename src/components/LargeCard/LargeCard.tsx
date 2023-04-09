@@ -77,7 +77,7 @@ const LargeCard: FC<IProps> = (props) => {
     <div className="relative cursor-pointer md:grid grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 w-[90%] mx-auto">
       {carouselItems?.map((item: any, index: number) => {
         return (
-          <div className="relative max-w-[20rem] min-h-[20rem] ">
+          <div className="relative max-w-[20rem] min-h-[20rem] " key={index}>
             <div
               onMouseEnter={() => {
                 onMouseEnterHandler(index);
