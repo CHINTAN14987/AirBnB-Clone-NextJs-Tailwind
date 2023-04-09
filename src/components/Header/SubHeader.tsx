@@ -20,9 +20,7 @@ const SubHeader = () => {
   const dispatch = useDispatch();
   const ref = useRef(null);
   const guestsRef = useRef(null);
-  // const [searchResults, setSearchResults] = useState<Boolean>(false);
   const dates = useSelector((state: any) => state.Reducer);
-  const disptach = useDispatch();
 
   const onFocusRegionHandler = (): void => {
     setDisplayRegion(true);
@@ -64,7 +62,6 @@ const SubHeader = () => {
     const scrollHandler = () => {
       if (window.scrollY) {
         setDisplayRegion(false);
-        dispatch(appBackground({ bg: "#ffffff", pos: "sticky" }));
       }
     };
     window.addEventListener("scroll", scrollHandler);
@@ -91,7 +88,6 @@ const SubHeader = () => {
           ref={ref}
           onClick={() => {
             setDisplayRegion(true);
-            dispatch(appBackground({ bg: "grey", pos: "sticky" }));
           }}
         >
           <h3 className="text-sm font-semibold">Where</h3>

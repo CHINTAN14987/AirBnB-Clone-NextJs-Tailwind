@@ -36,9 +36,9 @@ const Reviews: FC<IProps> = (props) => {
       >
         {detailedReviews.length ? (
           <>
-            {detailedReviews.map((review: any) => {
+            {detailedReviews.map((review: any, index: number) => {
               return (
-                <div>
+                <div key={index}>
                   <div className="flex space-x-4">
                     <div className="h-[3rem] w-[3rem]">
                       <img src={review.img} alt="" className="rounded-full" />
