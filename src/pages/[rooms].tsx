@@ -30,7 +30,7 @@ const Rooms: FC<IProps> = (props) => {
   const { hotel } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [focusedInput, setFocusedInput] = useState("startDate");
+  const [focusedInput, setFocusedInput] = useState<any>("startDate");
   const router = useRouter();
   const dates = useSelector((state: any) => state.Reducer);
   const dispatch = useDispatch();

@@ -10,7 +10,7 @@ import { bookingDates } from "@/redux/action";
 const data = ["Exact Dates", "± 1days", "± 2days", "± 3days", "± 7days"];
 
 const BookingDate = () => {
-  const [focusedInput, setFocusedInput] = useState(null);
+  const [focusedInput, setFocusedInput] = useState<any>(null);
   const dates = useSelector((state: any) => state.Reducer);
   const disptach = useDispatch();
 
@@ -18,7 +18,6 @@ const BookingDate = () => {
     <div>
       <div className="date-picker-component">
         <DateRangePicker
-          className=""
           startDate={dates.bookingStartDate}
           startDateId="startDate"
           endDate={dates.bookingEndDate}

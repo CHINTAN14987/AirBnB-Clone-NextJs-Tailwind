@@ -118,7 +118,7 @@ export const getStaticProps = async (context: any) => {
   const hotelImages = data.find(
     (item) => item.id === context?.params?.images?.[0]
   );
-  console.log(hotelImages);
+
   return {
     props: { images: hotelImages },
   };
