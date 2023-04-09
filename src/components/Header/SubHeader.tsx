@@ -19,7 +19,6 @@ const SubHeader = () => {
 
   const onFocusRegionHandler = (): void => {
     setDisplayRegion(true);
-    dispatch(appBackground({ bg: "rgba(0, 0, 0, 0.2)", pos: "initial" }));
   };
 
   const onFocusGuestsHandler = (): void => {
