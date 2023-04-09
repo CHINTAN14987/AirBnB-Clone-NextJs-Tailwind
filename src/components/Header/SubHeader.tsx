@@ -1,9 +1,4 @@
-import {
-  appBackground,
-  bookingDates,
-  destinationSearch,
-  searchResults,
-} from "@/redux/action";
+import { destinationSearch, searchResults } from "@/redux/action";
 import { SearchIcon } from "@heroicons/react/solid";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/";
