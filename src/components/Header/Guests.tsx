@@ -1,11 +1,10 @@
 import {
-  appBackground,
   GuestListBookingDecrement,
   GuestListBookingIncrement,
 } from "@/redux/action";
 import { Modal } from "antd";
 import Image from "next/image";
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomModal from "../modal/CustomModal";
 interface IProps {
