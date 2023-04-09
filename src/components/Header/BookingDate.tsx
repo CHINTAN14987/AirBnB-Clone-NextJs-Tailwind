@@ -29,7 +29,7 @@ const BookingDate: FC<IProps> = (props) => {
           onDatesChange={({ startDate, endDate }) => {
             disptach(bookingDates({ startDate, endDate }));
           }}
-          focusedInput={focus ? focus : focusedInput}
+          focusedInput={(focus as any) ? focus : focusedInput}
           onFocusChange={setFocusedInput}
           // isOutsideRange={(day) => !isInclusivelyBeforeDay(day, moment())}
           initialVisibleMonth={() => moment().subtract(0, "month")}
