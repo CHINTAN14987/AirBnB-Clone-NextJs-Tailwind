@@ -28,9 +28,9 @@ const Slider: FC<IProps> = (props) => {
         loop={true}
         className="carousel-width owl-carousel owl-theme"
       >
-        {content?.map((item: string) => {
+        {content?.map((item: string, index: number) => {
           return (
-            <>
+            <div key={index}>
               {item && (
                 <div>
                   <div
@@ -46,7 +46,7 @@ const Slider: FC<IProps> = (props) => {
                   </div>
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </OwlCarousel>

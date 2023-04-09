@@ -65,9 +65,12 @@ const BookingDate: FC<IProps> = (props) => {
           className="flex gap-4 absolute items-center"
           style={{ top: "43rem", right: "17.8rem", zIndex: "100" }}
         >
-          {data?.map((item: string) => {
+          {data?.map((item: string, index: number) => {
             return (
-              <span className=" w-[5.5rem] border border-gray-200 rounded-full py-1 text-center text-gray-800 text-sm hover:border-black cursor-pointer">
+              <span
+                key={index}
+                className=" w-[5.5rem] border border-gray-200 rounded-full py-1 text-center text-gray-800 text-sm hover:border-black cursor-pointer"
+              >
                 {item}
               </span>
             );
