@@ -20,10 +20,9 @@ const ImageContainer: FC<IProps> = (props) => {
     images: { id, groupImages },
   } = props;
   const [displayCarousel, setDisplayCarousel] = useState<boolean>(false);
-  const [carouselIndex, setCarouselIndex] = useState<number>(0);
-  const displayCarouselHandler = (index: number): void => {
+
+  const displayCarouselHandler = (): void => {
     setDisplayCarousel(true);
-    setCarouselIndex(index);
   };
   const cancelDisplayCarouselHandler = (): void => {
     setDisplayCarousel(false);
@@ -91,7 +90,7 @@ const ImageContainer: FC<IProps> = (props) => {
                     className="relative min-h-[20rem] hover:opacity-50 hover:bg-black"
                     key={index}
                     onClick={() => {
-                      displayCarouselHandler(index);
+                      displayCarouselHandler();
                     }}
                   >
                     <Image src={item} layout="fill" alt="" />

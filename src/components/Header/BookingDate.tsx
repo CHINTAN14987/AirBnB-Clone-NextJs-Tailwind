@@ -1,12 +1,11 @@
 import React, { FC, useState } from "react";
-import ReactDOM from "react-dom";
-import { DateRangePicker, isInclusivelyBeforeDay } from "react-dates";
+import { DateRangePicker } from "react-dates";
 import moment from "moment";
 
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
-import { bookingDates, flexibleDates } from "@/redux/action";
+import { bookingDates } from "@/redux/action";
 // import "@vf-alchemy/vattenfall-design-system/scss/main.scss";
 const data = ["Exact Dates", "± 1days", "± 2days", "± 3days", "± 7days"];
 interface IProps {
@@ -16,11 +15,7 @@ const BookingDate: FC<IProps> = (props) => {
   const { focus } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const dates = useSelector((state: any) => state.Reducer);
-  const [displayFlexibleDates, setDisplayFlexibleDates] = useState(false);
   const disptach = useDispatch();
-  const flexibleDatesHandler = (): void => {
-    setDisplayFlexibleDates(true);
-  };
 
   return (
     <div>
@@ -50,10 +45,7 @@ const BookingDate: FC<IProps> = (props) => {
             <h3 className=" bg-white rounded-full p-2 w-[10rem] text-center font-semibold text-base">
               Choose Dates
             </h3>
-            <h3
-              className="w-[10rem] text-center font-semibold text-base hover:bg-white rounded-full p-2"
-              onClick={flexibleDatesHandler}
-            >
+            <h3 className="w-[10rem] text-center font-semibold text-base hover:bg-white rounded-full p-2">
               Flexible Dates
             </h3>
           </div>
