@@ -27,9 +27,6 @@ const Slider: FC<IProps> = (props) => {
         nav={hover}
         loop={true}
         className="carousel-width owl-carousel owl-theme"
-        // onChanged={(e) => {
-        //   console.log(e.target);
-        // }}
       >
         {content?.map((item: string) => {
           return (

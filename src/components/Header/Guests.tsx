@@ -3,9 +3,8 @@ import {
   GuestListBookingDecrement,
   GuestListBookingIncrement,
 } from "@/redux/action";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import Image from "next/image";
-import Link from "next/link";
 import React, { FC, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomModal from "../modal/CustomModal";

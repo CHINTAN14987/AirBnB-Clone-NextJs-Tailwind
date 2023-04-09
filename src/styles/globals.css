@@ -22,6 +22,37 @@
   .carousel-width {
     width: 20rem !important;
   }
+  .room-image-carousel-wrapper .owl-carousel .owl-nav button.owl-prev {
+    width: 4rem !important;
+    height: 4rem !important;
+    background-color: black !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: 40% !important;
+    left: -15rem !important;
+    border: 2px solid grey;
+    z-index: 100 !important;
+    display: flex;
+  }
+  .top-carousel > .owl-prev {
+    width: 4rem !important;
+    height: 4rem !important;
+    background-color: black !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: -25% !important;
+    left: -15rem !important;
+    border: 2px solid grey;
+    z-index: 100 !important;
+    display: flex;
+  }
+  .room-image-carousel-wrapper .owl-carousel .owl-nav button.owl-prev span {
+    font-size: 40px !important;
+    color: white !important;
+    top: -5px !important;
+    left: 22px !important;
+    position: absolute;
+  }
   .owl-carousel .owl-nav button.owl-prev {
     width: 2rem !important;
     height: 2rem !important;
@@ -50,12 +81,36 @@
     right: 5% !important;
     font-size: 30px !important;
   }
+  .room-image-carousel-wrapper .owl-carousel .owl-nav button.owl-next {
+    width: 4rem !important;
+    height: 4rem !important;
+    background-color: white !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    border: 2px solid grey;
+    top: 40% !important;
+    right: -15rem !important;
+    background-color: black !important;
+  }
+  .room-image-carousel-wrapper .owl-carousel .owl-nav button.owl-next span {
+    font-size: 40px !important;
+    color: white !important;
+    top: -5px !important;
+    left: 25px !important;
+    position: absolute;
+  }
   .carousel-width .owl-nav button.owl-next span {
     color: black !important;
     position: absolute;
     top: -30% !important;
     left: 30% !important;
   }
+  /* .room-image-carousel-wrapper .carousel-width .owl-nav button.owl-next span {
+    color: black !important;
+    position: absolute;
+    top: 0 !important;
+    left: 30% !important;
+  } */
   .owl-nav {
     margin-top: 0 !important;
   }
@@ -300,4 +355,50 @@
 
 .ant-modal-close {
   left: 10px !important;
+}
+.image-outer-wrapper div:nth-child(1),
+.image-outer-wrapper div:nth-child(4),
+.image-outer-wrapper div:nth-child(7) {
+  width: 100%;
+}
+.image-outer-wrapper div:nth-child(2),
+.image-outer-wrapper div:nth-child(3),
+.image-outer-wrapper div:nth-child(5),
+.image-outer-wrapper div:nth-child(6) {
+  flex-grow: 0.5;
+}
+.top-carousel > .owl-nav.disabled {
+  display: block !important;
+}
+.top-carousel .owl-nav button.owl-prev {
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0% !important;
+  left: -5% !important;
+  border: 2px solid grey;
+  border: 2px solid grey !important;
+  z-index: 100 !important;
+}
+.top-carousel .owl-nav button.owl-next {
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0% !important;
+  right: -5% !important;
+  border: 2px solid grey !important;
+  z-index: 100 !important;
+}
+.top-carousel .owl-nav button.owl-prev span {
+  font-size: 40px !important;
+  top: -22px !important;
+  left: 7px !important;
+  position: absolute;
+}
+.top-carousel .owl-nav button.owl-next span {
+  font-size: 40px !important;
+  top: -22px !important;
+  right: 7px !important;
+  position: absolute;
+}
+.owl-theme .owl-nav {
+  margin-top: 0 !important;
 }

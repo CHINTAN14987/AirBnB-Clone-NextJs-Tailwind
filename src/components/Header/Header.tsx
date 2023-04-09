@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   SearchIcon,
   GlobeAltIcon,
@@ -9,39 +9,22 @@ import {
 } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/router";
-import { app, database } from "../../firebase/firebase";
-import Link from "next/link";
 import SubHeader from "./SubHeader";
-import { useSelector } from "react-redux";
+import Link from "next/link";
 
-const Header = ({ placeholder }: any) => {
+const Header = () => {
   const [input, setInput] = useState<string>("");
-  const [StartDate, setStartDate] = useState<Date>(new Date());
-  const [endDate, setEndDate] = useState<Date>(new Date());
   const [guests, setGuests] = useState<string>("1");
   const router = useRouter();
   const [displayNav, setDisplayNav] = useState<Boolean>(false);
-  const SelectionRange: { startDate: Date; endDate: Date; key: string } = {
-    startDate: StartDate,
-    endDate: endDate,
-    key: "selection",
-  };
-  const handleSelect = (ranges: any) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  };
+
   const displaySubNavBarHandler = (): void => {
     setDisplayNav(true);
   };
-  const navPos = useSelector((state: any) => state.Reducer.navPos);
 
   return (
-    <header
-      className="shadow-md p-5 md:px-10"
-      style={{ position: navPos, zIndex: 20 }}
-    >
+    <header className="mx-20">
       <div className=" grid grid-cols-3 bg-white">
         <div className="relative flex items-center h-10 cursor-pointer my-auto">
           <Image
@@ -55,15 +38,6 @@ const Header = ({ placeholder }: any) => {
             }}
           />
         </div>
-
-        {/* <input
-          placeholder={placeholder || "Enter the Date"}
-          className="pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400"
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-        /> */}
 
         {displayNav ? (
           <div className="flex justify-between items-center w-[25rem]">
@@ -113,12 +87,6 @@ const Header = ({ placeholder }: any) => {
         </div>
         {input && (
           <div className="flex flex-col col-span-3 mx-auto">
-            {/* <DateRangePicker
-              ranges={[SelectionRange]}
-              minDate={new Date()}
-              rangeColors={["#FD5681"]}
-              onChange={handleSelect}
-            /> */}
             <div className="flex items-center border-b mb-4">
               <h2 className="text-2xl flex-grow font-semibold">
                 Number of Guests
@@ -143,22 +111,7 @@ const Header = ({ placeholder }: any) => {
               >
                 Cancel
               </button>
-              <button
-                className="flex-grow text-red-500"
-                onClick={() => {
-                  router.push({
-                    pathname: "/search",
-                    query: {
-                      location: input,
-                      startDate: StartDate.toISOString(),
-                      endDate: endDate.toISOString(),
-                      noOfGuests: guests,
-                    },
-                  });
-                }}
-              >
-                Search
-              </button>
+              <button className="flex-grow text-red-500">Search</button>
             </div>
           </div>
         )}

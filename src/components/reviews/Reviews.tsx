@@ -55,7 +55,7 @@ const Reviews: FC<IProps> = (props) => {
                   <div>
                     {!modalActive && review.content.length > 150 ? (
                       <div>
-                        <p className="mb-2 text-lg font-light">
+                        <p className="mb-2 text-lg font-light text-gray-800 mt-2">
                           {review.content.substring(0, 150)}...
                         </p>
                         <span
@@ -70,7 +70,7 @@ const Reviews: FC<IProps> = (props) => {
                         className={`${
                           modalActive
                             ? "mt-2 mb-8 text-base"
-                            : "mb-2 text-lg font-light"
+                            : "mb-2 text-lg font-light  text-gray-800 mt-2"
                         }`}
                       >
                         <Highlighter

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import ReactDOM from "react-dom";
 import { DateRangePicker, isInclusivelyBeforeDay } from "react-dates";
 import moment from "moment";
@@ -9,10 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookingDates, flexibleDates } from "@/redux/action";
 // import "@vf-alchemy/vattenfall-design-system/scss/main.scss";
 const data = ["Exact Dates", "± 1days", "± 2days", "± 3days", "± 7days"];
-function BookingDate() {
+interface IProps {
+  focus?: string | null;
+}
+const BookingDate: FC<IProps> = (props) => {
+  const { focus } = props;
   const [focusedInput, setFocusedInput] = useState(null);
   const dates = useSelector((state: any) => state.Reducer);
+  const [displayFlexibleDates, setDisplayFlexibleDates] = useState(false);
   const disptach = useDispatch();
+  const flexibleDatesHandler = (): void => {
+    setDisplayFlexibleDates(true);
+  };
 
   return (
     <div>
@@ -26,7 +34,7 @@ function BookingDate() {
           onDatesChange={({ startDate, endDate }) => {
             disptach(bookingDates({ startDate, endDate }));
           }}
-          focusedInput={focusedInput}
+          focusedInput={focus ? focus : focusedInput}
           onFocusChange={setFocusedInput}
           // isOutsideRange={(day) => !isInclusivelyBeforeDay(day, moment())}
           initialVisibleMonth={() => moment().subtract(0, "month")}
@@ -42,7 +50,10 @@ function BookingDate() {
             <h3 className=" bg-white rounded-full p-2 w-[10rem] text-center font-semibold text-base">
               Choose Dates
             </h3>
-            <h3 className="w-[10rem] text-center font-semibold text-base hover:bg-white rounded-full p-2">
+            <h3
+              className="w-[10rem] text-center font-semibold text-base hover:bg-white rounded-full p-2"
+              onClick={flexibleDatesHandler}
+            >
               Flexible Dates
             </h3>
           </div>
@@ -65,5 +76,5 @@ function BookingDate() {
       )}
     </div>
   );
-}
+};
 export default BookingDate;

@@ -8,17 +8,11 @@ import { SearchIcon } from "@heroicons/react/solid";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/";
 import BookingStartDate from "./BookingDate";
-import BookingDate from "./BookingDate";
 import Region from "./Region";
-import { DatePicker, Space } from "antd";
 import Guests from "./Guests";
-import { DateRangePicker, isInclusivelyBeforeDay } from "react-dates";
-import moment from "moment";
-
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import FlexibleDates from "./FlexibleDates";
-const { RangePicker } = DatePicker;
+
 const SubHeader = () => {
   const [displayRegion, setDisplayRegion] = useState<Boolean>(false);
   const [displayGuests, setDisplayGuests] = useState<Boolean>(false);
@@ -42,7 +36,6 @@ const SubHeader = () => {
     dispatch(destinationSearch({ location: e.target.value }));
   };
   const searchHandler = () => {
-    // setSearchResults(true);
     dispatch(
       searchResults({
         data: {
@@ -57,7 +50,6 @@ const SubHeader = () => {
 
   useEffect(() => {
     const clickHandler = (e: any) => {
-      console.log(e.target, "hello");
       if (!ref?.current?.contains(e.target)) {
         setDisplayRegion(false);
       }
@@ -97,6 +89,10 @@ const SubHeader = () => {
         <div
           className="w-[18rem] flex flex-col justify-center p-3 rounded-full shadow-xl bg-white relative"
           ref={ref}
+          onClick={() => {
+            setDisplayRegion(true);
+            dispatch(appBackground({ bg: "grey", pos: "sticky" }));
+          }}
         >
           <h3 className="text-sm font-semibold">Where</h3>
           <input
@@ -123,9 +119,33 @@ const SubHeader = () => {
               <h3 className="text-sm font-semibold">Who</h3>
               <input
                 placeholder="Add guests"
-                className="bg-gray-200 w-[5rem] outline-none"
+                className="bg-gray-200 w-[5rem] outline-none text-sm placeholder:text-sm font-semibold"
                 readOnly
                 onFocus={onFocusGuestsHandler}
+                value={
+                  dates.list.adult > 1
+                    ? `${Object.values(dates.list).reduce(
+                        (initial: any, accum: any) => {
+                          return initial + accum;
+                        },
+                        0
+                      )} guests`
+                    : dates.list.adult === 1 &&
+                      Object.values({
+                        infants: dates.list.infants,
+                        children: dates.list.children,
+                        pets: dates.list.pets,
+                      }).reduce((initial: any, accum: any) => {
+                        return initial + accum;
+                      }, 0) === 0
+                    ? ""
+                    : `${Object.values(dates.list).reduce(
+                        (initial: any, accum: any) => {
+                          return initial + accum;
+                        },
+                        0
+                      )} guests`
+                }
               />
               {displayGuests && <Guests />}
             </div>

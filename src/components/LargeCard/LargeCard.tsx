@@ -1,9 +1,8 @@
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Slider from "./Slider";
 import { HeartTwoTone, HeartFilled, StarFilled } from "@ant-design/icons";
-import { addDoc, collection } from "firebase/firestore";
-import { database, db } from "@/firebase/firebase";
-import { getDatabase, ref, set, update } from "firebase/database";
+import { db } from "@/firebase/firebase";
+import { ref, update } from "firebase/database";
 import { useRouter } from "next/router";
 
 interface IProps {
@@ -30,18 +29,11 @@ const LargeCard: FC<IProps> = (props) => {
     setDisplayPriceItemIndex(value);
   };
   const whishlistAddHandler = (value: any) => {
-    // const dbInstance = collection(database, "wishlist");
-    // addDoc(dbInstance, value);
     setIsRefreshing(false);
-
-    // console.log(getDatabase(database));
     update(ref(db, `hotel/${value.id}`), {
       wishlist: true,
     });
     setIsRefreshing(true);
-
-    // Router.replace(Router.asPath);
-    // console.log(value);
   };
 
   const hotelRoomsHandler = (
@@ -56,9 +48,7 @@ const LargeCard: FC<IProps> = (props) => {
     setIsRefreshing(true);
     await update(ref(db, `hotel/${value.id}`), {
       wishlist: false,
-    }).then((snapshot) => {});
-    setIsRefreshing(false);
-    // Router.replace(Router.asPath);
+    });
   };
   const cancelDiplayPriceHandler = () => {
     setDisplayPrice(false);
@@ -81,7 +71,7 @@ const LargeCard: FC<IProps> = (props) => {
       }
       setCarouselItems(carouselData);
     });
-  }, [isRefreshing]);
+  }, [props]);
 
   return (
     <div className="relative cursor-pointer md:grid grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 w-[90%] mx-auto">

@@ -23,7 +23,7 @@ const Amenities = ({ amenities }: any) => {
     setIsModalOpen(true);
   };
   return (
-    <section className="border-b border-gray-200">
+    <section className="border-b border-gray-200 pb-8">
       <h3 className="text-3xl text-black font-bold  my-8">
         What this place offers
       </h3>
