@@ -13,8 +13,8 @@ const SubHeader = () => {
   const [displayGuests, setDisplayGuests] = useState<Boolean>(false);
   const bookingDetails = useSelector((state: any) => state.Reducer);
   const dispatch = useDispatch();
-  const ref = useRef(null);
-  const guestsRef = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const guestsRef = useRef<HTMLDivElement>(null);
   const dates = useSelector((state: any) => state.Reducer);
 
   const onFocusRegionHandler = (): void => {

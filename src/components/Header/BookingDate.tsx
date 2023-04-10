@@ -27,9 +27,7 @@ const BookingDate = () => {
           }}
           focusedInput={focusedInput}
           onFocusChange={setFocusedInput}
-          // isOutsideRange={(day) => !isInclusivelyBeforeDay(day, moment())}
           initialVisibleMonth={() => moment().subtract(0, "month")}
-          // numberOfMonths={1}
           orientation={"horizontal"}
         />
 
