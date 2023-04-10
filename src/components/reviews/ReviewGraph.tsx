@@ -1,7 +1,6 @@
 import { StarFilled } from "@ant-design/icons";
 import { Progress } from "antd";
 import React, { FC } from "react";
-import Reviews from "./Reviews";
 interface IProps {
   rating: string;
   modalActive: boolean;

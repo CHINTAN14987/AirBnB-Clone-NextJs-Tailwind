@@ -1,6 +1,4 @@
-import { StarFilled } from "@ant-design/icons";
 import React, { FC, useState } from "react";
-import { Modal, Progress } from "antd";
 import ReviewGraph from "./ReviewGraph";
 import Reviews from "./Reviews";
 interface IProps {

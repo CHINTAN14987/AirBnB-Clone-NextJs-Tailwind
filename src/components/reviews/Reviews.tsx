@@ -2,7 +2,6 @@ import React, { useState, FC } from "react";
 import data from "./data.json";
 import ReviewModal from "./ReviewModal";
 import { Modal } from "antd";
-import CustomModal from "../modal/CustomModal";
 import Highlighter from "react-highlight-words";
 
 interface IProps {

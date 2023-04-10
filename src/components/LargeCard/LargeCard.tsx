@@ -36,10 +36,7 @@ const LargeCard: FC<IProps> = (props) => {
     setIsRefreshing(true);
   };
 
-  const hotelRoomsHandler = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    item: any
-  ) => {
+  const hotelRoomsHandler = (e: any, item: any) => {
     e.preventDefault();
     (e.target as HTMLElement).tagName === "IMG" &&
       Router.push({ pathname: `./${item.id}`, query: { id: item.id } });
