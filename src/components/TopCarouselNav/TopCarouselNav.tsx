@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "../LargeCard/Slider";
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");

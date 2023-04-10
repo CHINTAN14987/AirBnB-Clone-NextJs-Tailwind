@@ -1,5 +1,11 @@
 import React, { FC } from "react";
 var $ = require("jquery");
+declare global {
+  interface Window {
+    $?: any;
+    jQuery?: any;
+  }
+}
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
 }

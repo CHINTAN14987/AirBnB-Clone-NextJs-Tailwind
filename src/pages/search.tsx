@@ -23,7 +23,7 @@ const Search: FC<IProps> = (props) => {
   const placeholder = `${query.location}-${formattedStartDate} - ${formattedEndDate}- ${query.noOfGuests}`;
   return (
     <div>
-      <Header placeholder={placeholder} />
+      <Header />
       <section>
         <main>
           <h3 className="font-semibold text-sm text-gray-700 py-2 m-5 mt-10">
