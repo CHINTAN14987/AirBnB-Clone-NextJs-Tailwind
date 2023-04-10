@@ -18,7 +18,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import Image from "next/image";
 interface IProps {
   content: any;
-  hover: Boolean;
+  hover: boolean;
 }
 const Slider: FC<IProps> = (props) => {
   const { content, hover } = props;
